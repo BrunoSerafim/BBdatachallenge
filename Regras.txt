@@ -1,0 +1,153 @@
+Regras específicas desta competição
+
+REGULAMENTO
+
+BB Data Challenge - Desafio Filas de caixa PSO
+
+
+
+1. EMPRESA PROMOTORA
+1. Razão Social: Banco do Brasil S.A.
+2. Endereço: SAUN QUADRA 5, BLOCO B, ASA NORTE - DF – CEP 70040-912
+3. CNPJ nº. 00.000.000/0001-91
+4. Área promotora: UAN e DIOPE
+2. MODALIDADE DA PROMOÇÃO:
+1. Promoção Interna
+3. APRESENTAÇÃO
+1.  “Fila de Caixa PSO” faz parte da ação BB Data Challenge, uma plataforma de desafios para a comunidade do BB, que permitirá aos gestores propor soluções de problemas reais por meio da Ciência de Dados. O desafio tem como objetivo a construção de um modelo analítico que fará a previsão do percentual de atendimentos acima de 15 minutos para auxiliar na criação de estratégias para redução do tempo de espera dos clientes.
+4. PÚBLICO
+1. Funcionários do Banco do Brasil, lotados em território nacional e em situação real de trabalho.
+5. PERÍODO DA PROMOÇÃO
+1. 06/10/2021 a 15/12/2021
+6. PERÍODO DE PARTICIPAÇÃO
+1. 06/10/2021 a 22/11/2021
+2. Será considerado o horário de Brasília/DF para todos os períodos descritos neste regulamento.
+7. DISPOSIÇÕES GERAIS
+1. Nos dias atuais, o dinamismo é um dos fatores-chave na relação entre pessoas e organizações. Qualquer tipo de atraso operacional é visto como uma característica negativa e acarreta o descontentamento por parte dos clientes.
+2. A espera em uma fila de banco pode ser crítica, uma vez que o tempo percebido pelo consumidor pode ser bem maior que o analisado pela instituição. E a demora no atendimento é, muitas vezes, o motivo da insatisfação da percepção geral do atendimento.
+3. Para esse desafio temos a situação - Em Diopetown temos 25 agências que possuem serviço de caixa.
+4. Pensando no bem-estar dos nossos clientes, seria importante saber o percentual de atendimento que foi iniciado com tempo de espera acima de 15 minutos. O estudo deve trazer informações para cada hora, lembrando que o horário de funcionamento é das 10h às 14h.
+5. Essas informações irão colaborar com a construção da estratégia de atuação, que tem como objetivo reduzir o tempo de atendimento.
+6. O conjunto público de dados para treino serão disponibilizados na aba Dados do desafio em https://datachallenge.intranet.bb.com.br, contendo os seguintes campos:
+
+ID; ID_UOR; TS_INC_EPR; TS_INC_CHMD
+
+0; 0; 01/09/2020 10:01; 01/09/2020 10:02
+
+1; 0; 01/09/2020 10:04; 01/09/2020 10:22
+
+2; 0; 01/09/2020 10:16; 01/09/2020 10:25
+
+ Em que:
+
+
+ ID - Código identificador único para cada protocolo gerado;
+ ID_UOR - Código de identificação da UOR da agência, indicado por uma sequência de 0 a 24;
+ TS_INC_EPR – Timestamp do início de espera, ou seja, a data e hora da emissão do protocolo;
+TS_INC_CHMD – Timestamp da primeira chamada do protocolo.
+
+
+1.  Os protocolos deverão ser agrupados por faixa de horário, tendo por referência o campo TS_INC_EPR (início da espera).
+
+DT receberá a data do atendimento;
+HH_INC receberá o horário de TS_INC_EPR; e
+HH_FIM receberá o horário de TS_INC_CHMD.
+                        Exemplo de cálculo do PC_ACI_PZ (percentual acima do prazo):
+Dentre os protocolos emitidos entre 10h e 10:59:59, em determinado dia            para determinada UOR, 8 (oito) foram atendidos em até 15 minutos e 2(dois) foram atendidos com espera superior a 15 minutos. A proporção atendida acima do prazo é 20.00 (%).
+
+
+ Arredondar PC_ACI_PZ em duas casas decimais com variação entre 0.00 e 100.00).
+ Considerar o ponto (.) como separador decimal.
+O resultado será semelhante à tabela abaixo:
+
+ ID; ID_UOR; DT; HH_INC; HH_FIM; PC_ACI_PZ
+
+10; 0; 2099-12-01; 10:00:00; 10:59:59; 8.33
+
+11; 0; 2099-12-01; 11:00:00; 11:59:59; 0.00
+
+12; 0; 2099-12-01; 12:00:00; 12:59:59; 0.00
+
+13; 0; 2099-12-01; 13:00:00; 13:59:59; 5.40
+
+14; 0; 2099-12-01; 14:00:00; 14:59:59; 16.13
+
+
+
+
+Protocolos emitidos com HH_INC antes das 10h, devem ser contabilizados entre 10:00:00 e 10:59:59, mantendo a contabilização total do tempo de espera.
+ Os protocolos com horário de emissão (HH_INC) das 14h em diante, devem ser contabilizados entre 14:00:00 e 14:59:59.
+ Há dias com horário especial de atendimento, por exemplo, dia 24/12. A utilização ou não desses registros ficará a critério do participante.
+
+
+1. A predição deverá ser efetuada para os registros disponíveis na aba Entregas do desafio na Plataforma BB Data Challenge.
+A submissão deverá ser feita exclusivamente na Plataforma BB Data Challenge, na aba Entrega, contendo o código que gerou a previsão no formato .ipynb e o arquivo resposta.csv contendo as previsões, com os campos separados por ponto e vírgula (;) e organizados conforme exemplo abaixo:
+
+ID;PC_ACI_PZ
+
+10;5.73
+
+11;2.00
+
+12;0.00
+
+13;5.98
+
+14;13.13
+
+8. PARTICIPAÇÃO
+1.  A participação ocorre por meio de inscrição na Plataforma BB Data  Challenge (https://datachallenge.intranet.bb.com.br) disponível de 06/10/2021 até 23h59 do dia 19/10/2021.
+2. Para este desafio serão aceitas participações individuais ou em grupos de até 5 pessoas.
+3. O participante não poderá se inscrever em mais de uma equipe para o mesmo desafio.
+4. A submissão deverá ser feita conforme indicação no item 7.9 até 23h59 do dia 22/11/2021.
+5. Será permitido submeter até 5 propostas de resolução por dia, por equipe/funcionário.
+6. Ao se inscrever no desafio, o participante cede ao Banco do Brasil o direito de uso dos arquivos, códigos e demais materiais enviados, em sua integridade ou parte, podendo o Banco realizar as alterações que julgar necessárias.
+7. Esta ação é válida e destinada a todos os funcionários do Banco do Brasil, que preencham as demais condições de participação estabelecidas neste regulamento.
+8. A participação no desafio é voluntária.
+9. CRITÉRIOS DE CLASSIFICAÇÃO
+1. A RMSE (root mean squared error) é a medida que calcula a raiz quadrática dos erros entre valores observados (reais) e predições (hipóteses). Está no intervalo 0-infinito e retorna a magnitude dos erros e não sua direção. Quanto menor, melhor!
+2. Critério de desempate:
+1.  Menor data e hora de submissão na Plataforma
+
+CRITÉRIOS DE DESCLASSIFICAÇÃO
+
+
+9. Serão desclassificadas automaticamente, no ato da apuração, as inscrições de:
+I. funcionários que enviarem a solução fora do período de participação;
+II. pessoas que não façam parte do público da ação;
+III. funcionários que não atendam aos itens de verificação de impedimentos, conforme item 1.7 da IN 403-1;
+IV. funcionários envolvidos na organização dessa ação de endomarketing: UAN (GT BB Data Driven), Diope (Gerência de Inteligência Analítica) e Dipes/Canais e Design de RH.
+V. pessoa que seja administrador ou sócio detentor de mais de 5% (cinco por cento) do capital social do Banco do Brasil e/ou dirigente, mesmo que goze de licença não remunerada, ou parentes do mesmo, até terceiro grau;
+VI. pessoa que seja dirigente e/ou membro da administração de empresas coligadas e/ou do conglomerado do Banco do Brasil, mesmo que goze de licença não remunerada, ou parentes do mesmo, até terceiro grau.
+Os participantes poderão ser excluídos automaticamente da promoção em caso de suspeita de fraude, de não preenchimento dos requisitos previamente determinados ou em decorrência da prestação de informações incorretas ou equivocadas, de acordo com as regras deste regulamento.
+10. APURAÇÃO E RESULTADO
+1. As soluções recebidas serão avaliadas pela Comissão Organizadora seguindo os critérios de classificação dos itens 9.1 e 9.2.
+2. A apuração ocorrerá no período de 23/11/2021 a 30/11/2021.
+3. A relação dos ganhadores será disponibilizada até o dia 01/12/2021 por meio da Plataforma BB Data Challenge e pela AGN.
+4. Os contemplados também serão notificados por e-mail ou telefone.
+11. PREMIAÇÃO
+1. Será contemplado o funcionário ou a equipe que obtiver a primeira, segunda e terceira colocação no ranking da Plataforma Data Challenge.
+2. Premiação para o funcionário ou equipe que obtiver a primeira colocação:
+1.    Um vale presente no valor de R$250,00 (duzentos e cinquenta reais) + um tablet Samsung Galaxy Tab A8, 32GB ou uma Bolsa de Estudos da DSA (Data Science Academy) para o funcionário que participar individualmente ou para cada membro da equipe.
+2.   Para utilização da bolsa, deverão ser observados critérios próprios conforme termo de compromisso disponibilizado pela UAN no momento da concessão da bolsa.
+3.      Caso o funcionário esteja realizando alguma formação da DSA patrocinada pelo Banco, a premiação ficará restrita ao vale presente no valor de R$250,00 (duzentos e cinquenta reais) + um tablet Samsung Galaxy Tab A8, 32GB.
+3.   Premiação para o funcionário ou equipe que obtiver a segunda colocação:
+1.     Um vale presente no valor de R$125,00 (cento e vinte e cinco reais) + um Kindle 10ª geração, 8GB de memória para o funcionário que participar individualmente ou para cada membro da equipe.
+4.  Premiação para o funcionário ou equipe que obtiver a terceira colocação:
+1.      Um vale presente no valor de R$75,00 (setenta e cinquenta reais) + uma mochila para notebook 300x420x120mm para o funcionário que participar individualmente ou para cada membro da equipe.
+5.   O prêmio será entregue até o dia 15/12/2021.
+6. No caso de impossibilidade ou de desistência do funcionário contemplado, será possível a sua substituição seguindo a ordem de classificação, a critério do Banco do Brasil.
+7. A premiação não poderá, em hipótese alguma, ser convertida em dinheiro e não poderá ser trocada por qualquer outro produto a pedido do contemplado.
+8. O prêmio é pessoal e intransferível.
+9. A premiação poderá ser alterada, a critério do Banco do Brasil, por outra de características ou valor semelhante, caso existam empecilhos que dificultem o cumprimento e a entrega dos prêmios.
+10. O Banco do Brasil não é responsável por eventuais defeitos de fabricação do produto, cabendo ao funcionário o contato com o fabricante/fornecedor para acionamento de garantia.
+12. DISPOSIÇÕES FINAIS
+1. O participante contemplado licencia, desde já, os direitos de uso de sua imagem, nome e som de voz, sem qualquer ônus para o Banco do Brasil, para uso exclusivo na divulgação desta promoção, por período indeterminado.
+2. A Comissão Organizadora se reserva o direito de efetuar toda e qualquer ação corretiva no regulamento para evitar ações que venham a interferir no bom funcionamento da promoção.
+3. Dúvidas ou situações não contempladas no regulamento serão analisadas e deliberadas pela Comissão Organizadora.
+4. A participação significa inteira e completa concordância com este Regulamento.
+5. Todos os participantes da promoção declaram estar totalmente cientes das condições deste regulamento.
+
+
+
+Brasília (DF), 6 de outubro de 2021
